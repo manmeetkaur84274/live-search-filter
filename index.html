@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    body {
+            background: #050509;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Neon Search Bar Glow */
+        .search-glow {
+            box-shadow:
+                -8px 0 20px rgba(255, 0, 220, 0.7),
+                8px 0 25px rgba(35, 60, 255, 0.8),
+                0 0 12px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Background Neon Blur */
+        .glow-bg {
+            background: linear-gradient(
+                90deg,
+                rgba(255, 0, 220, 0.2),
+                transparent 45%,
+                rgba(30, 50, 255, 0.2)
+            );
+            filter: blur(40px);
+        }
+
+
+
+
+    
+   
+</style>
+
+<body class="min-h-screen overflow-hidden text-white ">
+
+
+        <!-- Search Section -->
+        <div class=" cont absolute top-1/2 left-0 w-full -translate-y-1/2 flex flex-col justify-center items-center h-60% w-50%">
+
+            
+            <!-- Glow Background -->
+            <div class="glow-bg absolute w-[60%] h-16">
+            </div>
+
+            
+
+            <!-- Search Box -->
+            <div class=" container search-glow relative flex items-center justify-between
+                        w-[55%] max-w-md h-[75px]
+                        bg-[#03030b] border border-gray-500
+                        rounded-2xl px-5">
+
+                               
+
+
+                        
+
+                <!-- Input -->
+                <input id="searchInput"
+                    type="text"
+                    placeholder="Search...."
+                    class="w-full bg-transparent text-white
+                           outline-none text-lg
+                           placeholder:text-gray-300"
+                >
+
+
+
+                <!-- Search Button -->
+                <button class="flex items-center justify-center
+                               w-11 h-11 rounded-xl
+                               border border-gray-600
+                               bg-[#101020]">
+
+                               
+
+                    <svg class="w-5 h-5"
+                         fill="none"
+                         stroke="white"
+                         stroke-width="1.8"
+                         viewBox="0 0 24 24">
+
+                        <circle cx="11" cy="11" r="7"/>
+                        <path d="M16 16L21 21"/>
+
+                    </svg>
+
+                    
+
+                </button>
+
+                
+                
+
+
+            </div>
+                    <ul id="studentList" class="text-white  flex flex-col  "> 
+                        <li class="text-bold"></li>
+                        
+                    </ul>
+
+
+            
+        </div>
+        
+        
+       
+
+
+    <!-- <div class="cont w-full h-screen bg-[#050509] relative ">
+         <div class="container  absolute top-10 left-8 right-8 flex justify-between items-center ">
+        <h2>Student Search</h2>
+
+        <input
+            type="text" id="searchInput" placeholder="Search student name..." >
+        
+
+        <ul id="studentList" >
+            
+
+        </ul>
+    </div>
+    </div> -->
+  
+
+</body>
+<script>
+    let students = [
+    "Gagan",
+    "Manpreet",
+    "Aman",
+    "Simran",
+    "Gurpreet",
+    "Harpreet",
+    "Rohan",
+    "Karan",
+    "Rahul",
+    "Priya",
+    "jass","sneha","karan","arman"
+];
+
+
+
+let searchInput = document.querySelector("#searchInput");
+let studentList = document.querySelector("#studentList");
+
+
+
+// Display all students
+function displayStudents(data) {
+
+
+
+    studentList.innerHTML = "";
+
+    if (data.length === 0) {
+        studentList.innerHTML = "<li>No students found</li>";
+        return;
+    }
+
+    data.forEach(function(name) {
+
+        let li = document.createElement("li");
+
+        li.textContent = name;
+      
+        studentList.appendChild(li);
+
+    });
+    
+
+}
+
+// Live search
+searchInput.addEventListener("input", function() {
+
+    let value = searchInput.value.toLowerCase();
+
+    let filteredStudents = students.filter(function(name) {
+
+        return name.toLowerCase().includes(value);
+
+    });
+
+    displayStudents(filteredStudents);
+
+});
+
+
+// Initially display all students
+displayStudents(students);
+
+
+// students.filter((value,index)=>{})
+
+
+    
+//   let arr = JSON.parse(localStorage.getItem("arr")) || [];
+
+//     function debounce(func, delay) {
+//         let timer;
+//         return function(...args) {
+
+        
+//             clearTimeout(timer);
+//             timer = setTimeout(() => {
+//                 func(...args);
+
+//             }, delay);
+
+//         };
+//         };
+
+    
+//     let search = document.querySelector("input")
+
+//     search.addEventListener("input", debounce(function () {
+        
+//         // console.log("helloooo");
+
+
+        
+
+//     }, 1000)
+//     );
+
+
+
+</script>
+
+</html>
